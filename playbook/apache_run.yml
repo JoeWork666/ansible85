@@ -1,0 +1,19 @@
+---
+- hosts: RCG-UAT-Frontend
+  become: yes
+  tasks:
+  - name: ensure apache httpd service running
+    service:
+      name: httpd
+      state: started
+
+  - name: Open port 80 for http access
+    firewalld:
+      service: http
+      permanent: true
+      state: enabled
+
+  - name: Restart the firewalld service to load in the firewall changes
+    service:
+      name: firewalld
+      state: restarted

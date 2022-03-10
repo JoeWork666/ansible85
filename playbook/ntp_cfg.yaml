@@ -1,0 +1,63 @@
+---
+- hosts: test
+  name: Edit NTP config 
+  become: true
+  gather_facts: false
+  tasks:
+
+  - name: Ansible replace string example0
+    replace:
+      path: /etc/ntp.conf
+      regexp: 'pool 0.ubuntu.pool.ntp.org iburst'
+      replace: "#pool 0.ubuntu.pool.ntp.org iburst"
+  - name: Ansible replace string example1
+    replace:
+      path: /etc/ntp.conf
+      regexp: 'pool 1.ubuntu.pool.ntp.org iburst'
+      replace: "#pool 1.ubuntu.pool.ntp.org iburst"
+  - name: Ansible replace string example2
+    replace:
+      path: /etc/ntp.conf
+      regexp: 'pool 2.ubuntu.pool.ntp.org iburst'
+      replace: "#pool 2.ubuntu.pool.ntp.org iburst"
+  - name: Ansible replace string example3
+    replace:
+      path: /etc/ntp.conf
+      regexp: 'pool 3.ubuntu.pool.ntp.org iburst'
+      replace: "#pool 3.ubuntu.pool.ntp.org iburst"
+  - name: Ansible replace string example3 
+    replace:
+      path: /etc/ntp.conf
+      regexp: 'pool ntp.ubuntu.com'
+      replace: "#pool ntp.ubuntu.com"
+      
+  - name: Edit NTP config
+    lineinfile: 
+      path: /etc/ntp.conf
+      line: "pool 192.168.168.70 iburst"
+      state: present
+  - name: Make sure ntp service
+    service:
+      name: ntp
+      state: restarted
+      enabled: yes
+#- name: Edit NTP config delete
+   # lineinfile:
+    #  path: /etc/ntp.conf
+     # line: "pool 192.168.168.251 iburst"
+      #state: absent
+#   - name: replcae ntp poll...
+#     blockinfile:
+#       path: /etc/ntp.conf
+#       block: |
+#       marker: "#{mark} pool {{ item.numble }}.ubuntu.pool.ntp.org iburst"
+#     loop:
+#       - { numble: 0 }
+#       - { numble: 1 }
+#       - { numble: 2 }
+#       - { numble: 3 }
+
+
+
+
+ 

@@ -1,0 +1,37 @@
+---
+- name: Install Docker
+  hosts: test
+  become: yes
+  tasks:
+    - name: Install list of packages
+      apt:
+        name: ['apt-transport-https','ca-certificates','curl','software-properties-common','gnupg2']
+        state: present
+        update_cache: yes
+    - name: sleep 10s
+      shell: sleep 10s
+    
+    - name: Add Docker GPG key
+      apt_key: url=https://download.docker.com/linux/ubuntu/gpg
+
+    - name: Add Docker APT repository
+      apt_repository:
+        repo: "deb [arch=amd64] https://download.docker.com/linux/ubuntu {{ ansible_distribution_release }} stable"
+        state: "present"
+   
+    - name: Install Docker CE
+      apt:
+        update_cache: yes
+        name: ['docker-ce', 'docker-ce-cli', 'containerd.io']
+        state: latest
+        
+    - name: sleep 10s
+      shell: sleep 10s
+
+    - name: Start Docker service
+      service:
+        name: docker
+        state: started
+        enabled: yes
+      become: yes
+

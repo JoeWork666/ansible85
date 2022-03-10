@@ -1,0 +1,11 @@
+---
+- hosts: test 
+  name: debug_test
+  become: true
+  vars:
+      testString: "Hi test"
+
+  tasks:
+  - name: debug_hello_world
+    debug:
+      msg: "{{testString}}"

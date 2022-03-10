@@ -1,0 +1,20 @@
+---
+- hosts: test
+  name: Install the NTP 
+  become: true
+  gather_facts: false
+  #vars:
+          #testString: "Hi test"
+
+  tasks:
+  - name: Install NTP
+    apt:
+      update_cache: yes
+      state: latest
+      name: ntp
+
+  - name: Make sure ntp service
+    service:
+      name: ntp
+      state: started
+      enabled: yes

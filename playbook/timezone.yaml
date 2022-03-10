@@ -1,0 +1,13 @@
+---
+- hosts: test
+  name: Set timezone
+  become: true
+  gather_facts: false
+  vars:
+        timezone: "Asia/Taipei"
+
+  tasks:
+  - name: Set timezone
+    timezone:
+      name: "{{timezone}}"
+

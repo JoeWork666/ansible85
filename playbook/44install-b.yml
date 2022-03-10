@@ -1,0 +1,7 @@
+---
+- name: Install Docker
+  hosts: test
+  become: yes
+  tasks:
+    - name: Add Docker GPG key
+      apt_key: url=https://download.docker.com/linux/ubuntu/gpg

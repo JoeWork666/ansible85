@@ -1,0 +1,4 @@
+[lei]
+#RCG-UAT-Frontend ansible_connection=ssh ansible_user=root  ansible_ssh_pass=Royal1688@@
+RCG-UAT-Frontend ansible_connection=ssh ansible_user=root  
+

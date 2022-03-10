@@ -1,0 +1,13 @@
+---
+- name: create Docker container
+  hosts: RCG-UAT-Frontend
+  become: yes
+
+  tasks:
+    - name: create Docker container
+      docker_container:
+        name: mynginx
+        image: nginx
+        state: started
+        ports:
+           - "8080:80"

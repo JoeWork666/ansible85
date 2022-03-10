@@ -1,0 +1,10 @@
+---
+- name: create Docker 
+  hosts: frank157
+  become: yes
+
+  tasks:
+    - name: pull an image
+      docker_image:
+        name: hello-world
+        source: pull

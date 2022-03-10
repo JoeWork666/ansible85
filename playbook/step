@@ -1,0 +1,5 @@
+1.root權限 主機
+2.主控 -> 私鑰copy-ssh
+3.將IP加入inventory的host_vars
+4.確認playbook的host
+5.執行playbook

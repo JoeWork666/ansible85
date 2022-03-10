@@ -1,0 +1,41 @@
+  - name: Ansible replace string example0
+    replace:
+      path: /etc/ntp.conf
+      regexp: 'pool 0.ubuntu.pool.ntp.org iburst'
+      replace: "#pool 0.ubuntu.pool.ntp.org iburst"
+  - name: Ansible replace string example1
+    replace:
+      path: /etc/ntp.conf
+      regexp: 'pool 1.ubuntu.pool.ntp.org iburst'
+      replace: "#pool 1.ubuntu.pool.ntp.org iburst"
+  - name: Ansible replace string example2
+    replace:
+      path: /etc/ntp.conf
+      regexp: 'pool 2.ubuntu.pool.ntp.org iburst'
+      replace: "#pool 2.ubuntu.pool.ntp.org iburst"
+  - name: Ansible replace string example3
+    replace:
+      path: /etc/ntp.conf
+      regexp: 'pool 3.ubuntu.pool.ntp.org iburst'
+      replace: "#pool 3.ubuntu.pool.ntp.org iburst"
+  - name: Ansible replace string example3 
+    replace:
+      path: /etc/ntp.conf
+      regexp: 'pool ntp.ubuntu.com'
+      replace: "#pool ntp.ubuntu.com"
+      
+  - name: Edit NTP config
+    lineinfile: 
+      path: /etc/ntp.conf
+      line: "pool 192.168.168.70 iburst"
+      state: present
+  - name: Make sure ntp service
+    service:
+      name: ntp
+      state: restarted
+      enabled: yes
+
+
+
+
+ 

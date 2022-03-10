@@ -1,0 +1,18 @@
+---
+- name: Install Docker
+  hosts: test
+  become: yes
+  tasks:
+    - name: Install list of packages
+      apt:
+        update_cache: yes
+        state: present
+        name: 
+        - apt-transport-https
+        - ca-certificates
+        - curl
+        - software-properties-common
+        - gnupg2
+
+        
+       

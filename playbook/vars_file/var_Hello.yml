@@ -1,0 +1,14 @@
+---
+- hosts: localhost
+  name: debug_test
+  become: true
+  #vars:
+  #testString: "Hi test"
+  vars_files:
+  - "vars/varsDemo.yml"
+
+  tasks:
+  - name: debug_hello_world
+    debug:
+      msg: "{{strTest}}"
+

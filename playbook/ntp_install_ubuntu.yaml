@@ -1,0 +1,13 @@
+---
+- hosts: test
+  name: Install the NTP and edit ntp.cfg
+  become: true
+  gather_facts: false
+ 
+
+  
+  import_playbook: ntp_ubuntu.yaml
+  
+  # - name: test2
+  #   import_playbook: ntp_cfg.yaml
+   

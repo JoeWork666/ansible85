@@ -1,0 +1,11 @@
+---
+- name: Install docker-py 
+  hosts: frank157
+  become: yes
+
+  tasks:
+    - name: Install yum docker-py
+      apt:
+        name: python-docker-py
+        state: latest
+

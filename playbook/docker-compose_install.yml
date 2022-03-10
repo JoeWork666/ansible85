@@ -1,0 +1,11 @@
+---
+- name: Install Docker-Compose
+  hosts: RCG-UAT-Frontend
+  become: yes
+
+  tasks:
+    - name: Install yum docker-compose
+      yum:
+        name: docker-compose
+        state: latest
+

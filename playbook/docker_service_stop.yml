@@ -1,0 +1,11 @@
+---
+- name: Stop Docker service
+  hosts: RCG-UAT-Frontend
+  become: yes
+
+  tasks:
+    - name: Stop Docker service 
+      service:
+        name: docker
+        state: stopped
+

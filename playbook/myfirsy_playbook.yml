@@ -1,0 +1,9 @@
+---
+- hosts: RCG-UAT-Frontend
+  name: play_test
+  become: true
+
+  tasks:
+  - name: check Sever Connection
+    ping:
+

@@ -1,0 +1,11 @@
+[local]
+localhost ansible_connection=local
+[all]
+joeu2Lab
+frank157
+[test]
+joeu2Lab
+#frank157
+[np]
+np-ap
+np-db

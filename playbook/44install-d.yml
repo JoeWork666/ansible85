@@ -1,0 +1,16 @@
+---
+- name: Install Docker
+  hosts: test
+  become: yes
+  tasks:
+    - name: Install Docker 
+      apt:
+        update_cache: yes
+        state: latest
+        name: 
+        - docker-ce
+        - docker-ce-cli
+        - containerd.io
+        
+    
+        

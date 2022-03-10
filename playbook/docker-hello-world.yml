@@ -1,0 +1,12 @@
+---
+- name: create Docker 
+  hosts: frank157
+  become: yes
+
+  tasks:
+    - name: create Docker run hello-world
+      docker_container:
+        name: hello-world
+        image: hello-world
+        state: started
+      

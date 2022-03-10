@@ -1,0 +1,54 @@
+---
+- name: node_exporter
+  hosts: test
+  remote_user: root
+
+  tasks:
+    - name: create node_exporter
+      docker_container:
+        name: "node_exporter"
+        image: prom/node-exporter
+        pull: no
+        ports:
+          - "9100:9100"
+        volumes:
+          - /proc:/host/proc:ro
+          - /sys:/host/sys:ro
+          - /:/rootfs:ro
+        command:
+          - '--path.procfs=/host/proc'
+          - '--path.sysfs=/host/sys'
+          - --collector.filesystem.ignored-mount-points
+          - "^/(sys|proc|dev|host|etc|rootfs/var/lib/docker/containers|rootfs/var/lib/docker/overlay2|rootfs/run/docker/netns|rootfs/var/lib/docker/aufs)($$|/)"
+        state: started
+        restart: yes
+    - name: create cadvisor
+      docker_container:
+        name: "cadvisor"
+        image: google/cadvisor:v0.33.0
+        #published_ports:
+         #- "8080:8080"
+        ports:
+          - "9080:8080"
+        log_driver: json-file
+        log_options:
+          max-size: '20m'
+          max-file: '5'
+        volumes:
+          - /cgroup:/cgroup:ro
+          - /:/rootfs:ro
+          - /var/run:/var/run:rw
+          #- /sys:/sys:ro
+          - /sys/fs/cgroup/cpu,cpuacct:/sys/fs/cgroup/cpuacct,cpu:ro
+          - /var/lib/docker/:/var/lib/docker:ro
+          - /dev/disk/:/dev/disk
+        devices:
+          - /dev/kmsg
+        privileged: yes
+        state: started
+        restart: yes
+        restart_policy: unless-stopped
+    #- name: start cadvisor
+      #docker_container:
+        #name: "cadvisor"
+        #state: started

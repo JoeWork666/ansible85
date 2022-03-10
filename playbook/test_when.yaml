@@ -1,0 +1,11 @@
+---
+- hosts: localhost
+  name: debug_when
+  become: true
+
+  tasks:
+  - name: debug_when
+    debug:
+      msg: "{{ansible_default_ipv4.address}}"
+    when: ansible_default_ipv4.address != '8.8.8.8'
+

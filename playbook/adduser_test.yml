@@ -1,0 +1,10 @@
+---
+- hosts: RCG-UAT-Frontend
+  become: yes
+  vars:
+       test_user: joe
+  tasks:
+  - name: add_user
+    user:
+      name: '{{test_user}}'
+      state: present

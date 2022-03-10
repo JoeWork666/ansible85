@@ -1,0 +1,11 @@
+---
+- hosts: RCG-UAT-Game-2 
+  #joeu2 
+  #RCG-UAT-Frontend
+  name: debug_test
+  become: true
+
+  tasks:
+  - name: debug_hello_world
+    debug:
+      msg: "Hello Ansible !!!"

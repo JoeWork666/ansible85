@@ -1,0 +1,13 @@
+---
+- hosts: localhost
+  name: debug_test
+  become: true
+  #gather_facts: false
+  tasks:
+    - name: debug_hello_world
+      debug:
+        msg: "loop{{item}}"
+      with_items:
+        - 0
+        - 2
+        - 1

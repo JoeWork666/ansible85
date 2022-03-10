@@ -1,0 +1,10 @@
+---
+- name: SVN_update
+  hosts: localhost
+  become: yes
+
+  tasks:
+    - name: SVN_update
+      shell:
+        chdir: /home/svntest1223/1222pro
+        cmd: svn update 

@@ -1,0 +1,11 @@
+---
+- name: Install Docker
+  hosts: test
+  become: yes
+  tasks:
+    - name: Install Python dependencies
+      apt:
+        update_cache: yes
+        state: latest
+        name: python3-pip
+    

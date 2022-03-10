@@ -1,0 +1,10 @@
+---
+- hosts: test
+  name: Install the NTP and edit ntp.cfg
+  become: true
+  gather_facts: false
+  tasks: 
+  - include_tasks: nn_1.yaml
+  - include_tasks: nn_2.yaml
+  - include_tasks: nn_3.yaml
+   

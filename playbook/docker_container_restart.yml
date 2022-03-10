@@ -1,0 +1,13 @@
+---
+- name: Restart Docker container
+  hosts: RCG-UAT-Frontend
+  become: yes
+
+  tasks:
+    - name: Restart Docker container
+      docker_container:
+        name: mynginx
+        restart: yes
+        state: started
+
+
